@@ -5,3 +5,7 @@ import ajax
 def test(request):
 	app_name = ajax.test(request)
 	return render_to_response("test.html", app_name)
+	
+
+
+                                                                                                                            
