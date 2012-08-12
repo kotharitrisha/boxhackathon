@@ -28,7 +28,7 @@ class Project(models.Model):
 class Task(models.Model):
 	id = models.AutoField(primary_key=True)
 	desc = models.CharField(max_length=100)
-	project_id = models.ForeignKey('Project')
+	project = models.ForeignKey('Project')
 	owner = models.ForeignKey('User')
 	step_id = models.IntegerField()
 	step_deadline = models.TimeField()

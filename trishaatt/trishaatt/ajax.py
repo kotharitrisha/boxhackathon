@@ -109,13 +109,16 @@ def project_delete(request):
 def task_add(request):
 	res = {}
         try:
+		print "reached task add yayy!"
 		data = request.REQUEST.copy()
 	        print data
                 today = datetime.datetime.today()
                 print today
-                project = Project.objects.get(id = data['title'])
+                project_rel = Project.objects.get(title = data['project_id'])
+		print project_rel
 		user = project.owner
-                task = Task(desc = data['desc'], step_id= data['step_id'],  step_deadline = today, project_id = project, owner =user)
+		print user
+                task = Task(desc = data['desc'], step_id= data['step_id'],  step_deadline = today, project = project_rel, owner =user)
                 task.save()
                 res['status']= True
         except:
