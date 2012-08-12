@@ -15,4 +15,10 @@ def login(request):
 	else:
 		return render_to_response('login.html')
 
-                                                                                                                            
+@csrf_exempt
+def signup(request):
+	if (request.POST):
+		print request.POST
+		return HttpResponse("successfully registered!")
+	else:
+		return render_to_response('signup.html')
