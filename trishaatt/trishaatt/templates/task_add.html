@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="/task_add">
+        Task description: <input type="text" name="desc" /> <br />
+        Project title: <input type="text" name="project_id" />
+        Task step id: <input type="text" name="step_id" />
+        Task deadline: <input type="text" name="step_deadline" />
+
+        <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

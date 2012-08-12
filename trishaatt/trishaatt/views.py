@@ -80,7 +80,15 @@ def project_delete(request):
 	
 @csrf_exempt
 def task_add(request):
-	pass
+        if (request.POST):
+                res = json.loads(ajax.project_add(request))
+                print res
+		if (res['status']):
+			return HttpResponseRedirect("index.html")
+                else:
+                        return HttpResponseRedirect("task_add.html")
+        else:
+                return render_to_response("task_add.html")
 	
 @csrf_exempt
 def task_search(request):

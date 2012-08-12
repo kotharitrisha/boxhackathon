@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^edit', 'trishaatt.views.edit'),
     url(r'^logout', 'trishaatt.views.logout'),
     url(r'^project_add', 'trishaatt.views.project_add'),
-
+    url(r'^task_add', 'trishaatt.views.task_add'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

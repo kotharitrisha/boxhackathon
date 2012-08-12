@@ -79,10 +79,11 @@ def edit(request):
 def project_add(request):
         res = {}
 	try:
+		data = request.REQUEST.copy()
        		today = datetime.datetime.today()
 		print today
 		user = User.objects.get(email = data['owner'])
-		project = Project(title = data['title'], desc= data['desc'], filename = data['filename'], owner =user)
+		project = Project(title = data['title'], desc= data['desc'], filename = data['filename'], deadline = today, owner =user)
 		project.save()
 		res['status']= True
 	except:
@@ -106,7 +107,21 @@ def project_delete(request):
 	
 @csrf_exempt
 def task_add(request):
-	pass
+	res = {}
+        try:
+		data = request.REQUEST.copy()
+	        print data
+                today = datetime.datetime.today()
+                print today
+                project = Project.objects.get(id = data['title'])
+		user = project.owner
+                task = Task(desc = data['desc'], step_id= data['step_id'],  step_deadline = today, project_id = project, owner =user)
+                task.save()
+                res['status']= True
+        except:
+                print sys.exc_info()[0]
+                res['status']= False
+        return json.dumps(res)
 	
 @csrf_exempt
 def task_search(request):
