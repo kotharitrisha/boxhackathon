@@ -5,8 +5,7 @@ import ajax, json
 
 def index(request):
 	try:
-		#c = RequestContext(request, {'email': request.session['email']})
-		return render_to_response("index.html")		
+		return render_to_response("index.html", {'email': request.session['email']})		
 	except:
 		return render_to_response("login.html")
 		
