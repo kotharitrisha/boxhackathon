@@ -28,9 +28,15 @@ def register(request):
 	res = {}
 	try:
 		data = request.POST.copy()
-		user = User(email = data['email'], password= data['password'])
-		user.save()
-		res['status']= True
+		user = User.objects.get(email = data['email'])
+		res['status']= False				
+	except User.DoesNotExist:
+		try:		
+			user = User(email = data['email'], password= data['password'])
+			b = user.save()
+			res['status']= True	
+		except:
+			res['status']= True	
 	except:
 		print sys.exc_info()[0]
 		res['status']=False
