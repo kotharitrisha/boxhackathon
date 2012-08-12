@@ -73,8 +73,9 @@ body {
 	color: #FFF;
 }
 
-.bold{
-	font-weight: bold;
+.name{
+	font-weight: bolder;
+	color: #ccc;
 }
 
 
