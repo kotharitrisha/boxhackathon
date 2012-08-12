@@ -29,3 +29,11 @@ def signup(request):
 			return HttpResponse("failure")
 	else:
 		return render_to_response('signup.html')
+
+@csrf_exempt
+def edit(request):
+	if (request.POST):
+		print request.POST
+		return HttpResponse("editted succesfully")
+	else:
+		return render_to_response('edit.html')
