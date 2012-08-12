@@ -73,3 +73,39 @@ def edit(request):
 			print sys.exc_info()[0]
 			res['status']=False
 	return res
+	
+@csrf_exempt
+def project_add(request):
+	pass
+	
+@csrf_exempt
+def project_search(request):
+	pass
+	
+
+@csrf_exempt
+def project_edit(request):
+	pass
+	
+@csrf_exempt
+def project_delete(request):
+	pass
+	
+	
+@csrf_exempt
+def task_add(request):
+	pass
+	
+@csrf_exempt
+def task_search(request):
+	pass
+	
+
+@csrf_exempt
+def task_edit(request):
+	pass
+	
+@csrf_exempt
+def task_delete(request):
+	pass
+	

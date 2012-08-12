@@ -50,3 +50,39 @@ def edit(request):
 		return HttpResponse("editted succesfully")
 	else:
 		return render_to_response('edit.html')
+		
+		
+@csrf_exempt
+def project_add(request):
+	pass
+	
+@csrf_exempt
+def project_search(request):
+	pass
+	
+
+@csrf_exempt
+def project_edit(request):
+	pass
+	
+@csrf_exempt
+def project_delete(request):
+	pass
+	
+	
+@csrf_exempt
+def task_add(request):
+	pass
+	
+@csrf_exempt
+def task_search(request):
+	pass
+	
+
+@csrf_exempt
+def task_edit(request):
+	pass
+	
+@csrf_exempt
+def task_delete(request):
+	pass
