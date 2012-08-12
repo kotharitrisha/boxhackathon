@@ -1,50 +1,33 @@
-function addTask(){
-	$("#new-project-dialog").dialog("destroy");
-	var width = $(window).width();
-	var height = $(window).height();
 
-	// Provide some space between the window edges.
-	var width = width - 100;
-	var height = height - 100;
-	var title = 'Add Task';
-	$("#new-task-dialog").dialog({ title: title, height: height, width: width});
-}
-
-function showNext(){
-	$("#new-task-dialog").dialog("destroy");
-	var width = $(window).width();
-	var height = $(window).height();
-
-	// Provide some space between the window edges.
-	var width = width - 100;
-	var height = height - 100;
-	var title = 'Add Task';
-	$("#more-task-dialog").dialog({ title: title, height: height, width: width});
-}
-
-	
-
-function addMoreTask(){	
-	console.log("Add More Task"); 
-	$("#more-task-dialog").dialog("destroy")
-	var width = $(window).width();
-	var height = $(window).height();
-
-	// Provide some space between the window edges.
-	var width = width - 100;
-	var height = height - 100;
-	var title = 'Add Task';
-	$("#new-task-dialog-temp").dialog({ title: title, height: height, width: width});
-
-}
-
-function doneAllTasks(){
-	console.log("Done Adding"); 
-	$("#new-task-dialog").dialog('destroy');
-}
 
 $(document).ready(function(){ 	
-    console.log("I am up");   
+    console.log("I am up");  
+    
+	addTask = function(){
+		$("#new-project-dialog").dialog("close");
+		console.log("Add Task");
+		var width = $(window).width();
+		var height = $(window).height();
+
+		// Provide some space between the window edges.
+		var width = width - 100;
+		var height = height - 100;
+		var title = 'Add Task';	
+		$("#new-task-dialog").dialog({ title: title, height: height, width: width, autoOpen:false, modal: true});		
+		$("#new-task-dialog").dialog("open");
+	}
+
+
+
+
+	addMoreTask = function(){	
+		console.log("Add More Task"); 
+		$("#new-task-dialog").dialog("open");
+	}
+
+	doneAllTasks = function(){
+		$("#new-task-dialog").dialog("close");
+	} 
     
     projects_table = $('#projects-table').dataTable({
 		"sDom": '<"top"f<"clear">>rt<"bottom"ilp<"clear">>',
