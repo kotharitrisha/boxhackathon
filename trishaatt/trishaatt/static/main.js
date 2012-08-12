@@ -85,6 +85,25 @@ $(document).ready(function(){
 	}
 	
 	
+	add_project = function() {
+		console.log("here");
+		params = {};
+		params.title = $("#project_title").val();
+		params.desc = $("#project_desc").val();
+		params.filename = $("#project_filename").val();
+		console.log("params " +  params.toString());		
+		var jaqxhr = $.post("/ajax/project_add/",
+			{'title': params.title,
+			'desc': params.desc,
+			'filename': params.filename},
+			function(data){
+				addTask();
+			}); 
+			
+			
+	}
+	
+	
 	function populate_projects_table(data){
 		console.log("Inside Populate Projects");
 		for(var i = 0; i< 15; i++){

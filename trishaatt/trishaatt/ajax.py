@@ -77,19 +77,16 @@ def edit(request):
 	
 @csrf_exempt
 def project_add(request):
-        res = {}
+	res = {}
 	try:
 		data = request.REQUEST.copy()
-       		today = datetime.datetime.today()
-		print today
-		user = User.objects.get(email = data['owner'])
-		project = Project(title = data['title'], desc= data['desc'], filename = data['filename'], deadline = today, owner =user)
+		project = Project(title = data['title'], desc= data['desc'], filename = data['filename'])
 		project.save()
 		res['status']= True
 	except:
 		print sys.exc_info()[0]
-		res['status']= True
-        return json.dumps(res)
+		res['status']= False
+	return HttpResponse(json.dumps(res))
 	
 @csrf_exempt
 def project_search(request):
