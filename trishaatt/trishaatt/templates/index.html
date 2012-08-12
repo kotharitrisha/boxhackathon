@@ -33,7 +33,11 @@
         <label for="task_desc">Task Description</label> <br />
 		<input type="text" name="task_desc" id="task_desc"/> <br />
 		<label for="task_owner">Task Owner</label> <br />
-		<input type="text" name="task_owner" id="task_owner"/> <br />
+		<select name="task_owner" id="task_owner">
+		  <option value="No employees">No employees</option>
+		  <option value="1-2 employees">1-2 employees</option>
+		  <option value="Other">Other(Specify reason)</option>
+		</select><br/>
 		<label for="task_desc">Deadline</label> <br />
 		<input type="text" name="task_deadline" id="task_deadline"/> <br />
         <input type="button" value="Next" id= "task_next" onclick="add_task(); return false;" />

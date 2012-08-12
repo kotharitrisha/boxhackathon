@@ -149,7 +149,7 @@ def task_search(request):
 		print data			
 		task = Task.objects.filter(project_id = int(data['id']))
 		print "I am here..."	
-		
+	
 		for t in task:
 			res['tasks'].append({'project_id': str(t.project.id), 'desc': str(t.desc), 'step_deadline' : str(t.step_deadline),
 			'owner_id' : str(t.owner.id), 'step_id' : str(t.step_id)})
