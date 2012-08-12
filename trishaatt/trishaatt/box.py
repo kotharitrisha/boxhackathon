@@ -10,7 +10,7 @@ from util import XMLNode
 '''
 
 URL = 'http://www.box.net/api/1.0/rest?'
-API_KEY = "qzahk2t68aexot06my47sj6oigqu8mas"
+API_KEY = "bpuz47c4vz2cyfvf5z7yguq3nnh1fyvj"
 RETURN_CODES = {
 		'get_ticket'        :   'get_ticket_ok',
 		'get_auth_token'    :   'get_auth_token_ok',
