@@ -52,4 +52,18 @@ def register(request):
 	
 @csrf_exempt
 def edit(request):
-	pass
+	res = {}
+        try:
+                data = request.POST.copy()
+                user = User.objects.get(email = data['email'])
+                if data["phone"]:
+			user.phone= data["phone"]
+		else:
+			return
+		b = user.save()
+		print b
+		res['status'] = True
+        except:
+                print sys.exc_info()[0]
+                res['status']=False
+        return res
