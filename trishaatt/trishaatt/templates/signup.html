@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <form method="POST" action="/signup">
-  <p> Sign up for a box account now! </p>
-        Email: <input type="text" name="email" /><br />
-        Password: <input type="password" name="password" />
-        Confirm password: <input type = "password" name = "password2" />
-        <input type="submit" value="Submit" />
+  Sign up for a new account!
+  <hr />
+  <label for="signup_email">Email</label><br />
+	<input type="text" name="email" id="signup_email" /><br />
+	<label for="signup_password">Password</label>
+	<input type="password" name="password" id="signup_password"/> <br /> <br />
+	<input type="submit" value="Submit" />
 </form>
 
 {% endblock %}
