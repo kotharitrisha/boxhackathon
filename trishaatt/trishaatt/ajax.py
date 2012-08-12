@@ -27,7 +27,10 @@ def login(request):
 
 @csrf_exempt
 def logout(request):
-	del request.session['email']
+	try:
+		del request.session['email']
+	except:
+		pass
 	
 	
 @csrf_exempt
