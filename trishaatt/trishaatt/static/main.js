@@ -1,5 +1,4 @@
 function addTask(){
-	console.log("Add Task"); 
 	$("#new-project-dialog").dialog("destroy");
 	var width = $(window).width();
 	var height = $(window).height();
@@ -11,12 +10,23 @@ function addTask(){
 	$("#new-task-dialog").dialog({ title: title, height: height, width: width});
 }
 
-function closeDialog(){
-	$("#new-task-dialog-temp").dialog("close");
-	$("#new-task-dialog-temp").dialog("destroy");
+function showNext(){
+	$("#new-task-dialog").dialog("destroy");
+	var width = $(window).width();
+	var height = $(window).height();
+
+	// Provide some space between the window edges.
+	var width = width - 100;
+	var height = height - 100;
+	var title = 'Add Task';
+	$("#more-task-dialog").dialog({ title: title, height: height, width: width});
 }
 
-function openDialog(){
+	
+
+function addMoreTask(){	
+	console.log("Add More Task"); 
+	$("#more-task-dialog").dialog("destroy")
 	var width = $(window).width();
 	var height = $(window).height();
 
@@ -25,17 +35,12 @@ function openDialog(){
 	var height = height - 100;
 	var title = 'Add Task';
 	$("#new-task-dialog-temp").dialog({ title: title, height: height, width: width});
-}
 
-function addMoreTask(){
-	closeDialog();
-	console.log("Add More Task"); 
-	openDialog();
 }
 
 function doneAllTasks(){
 	console.log("Done Adding"); 
-	$("#new-task-dialog").dialog('close');
+	$("#new-task-dialog").dialog('destroy');
 }
 
 $(document).ready(function(){ 	

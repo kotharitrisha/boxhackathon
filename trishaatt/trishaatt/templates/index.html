@@ -36,20 +36,14 @@ Hello <span class="bold">{{ email }}</span> | <a href="/logout">Log out</a>
 		<input type="text" name="task_owner" id="task_owner"/> <br />
 		<label for="task_desc">Deadline</label> <br />
 		<input type="text" name="task_deadline" id="task_deadline"/> <br />
-        <input type="submit" value="Next" onclick="addMoreTask();" />
-        <input type="submit" value="Done" onclick="doneAllTasks();" />
+        <input type="submit" value="Save" onclick="showNext();" />
 </form>
 </div>
 
-<div id="new-task-dialog-temp" style="display:none;"> 
+<div id="more-task-dialog" style="display:none;"> 
 <form class="dialog">
-        <label for="task_desc">Task Description</label> <br />
-		<input type="text" name="task_desc" id="task_desc"/> <br />
-		<label for="task_owner">Task Owner</label> <br />
-		<input type="text" name="task_owner" id="task_owner"/> <br />
-		<label for="task_desc">Deadline</label> <br />
-		<input type="text" name="task_deadline" id="task_deadline"/> <br />
-        <input type="submit" value="Next" onclick="addMoreTask();" />
+        New Task Added 
+		<input type="submit" value="Add More" onclick="addMoreTask();" />
         <input type="submit" value="Done" onclick="doneAllTasks();" />
 </form>
 </div>
