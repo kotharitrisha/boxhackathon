@@ -66,6 +66,10 @@ body {
 	color: #FFF;
 }
 
+.bold{
+	font-weight: bold;
+}
+
 
 #page{
 	position: absolute;
