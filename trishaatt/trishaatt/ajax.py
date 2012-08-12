@@ -11,7 +11,7 @@ def test(request):
 def login(request):
 	res = {}
 	try:
-		data = request.POST.copy()
+		data = request.REQUEST.copy()
 		user = User.objects.get(email = data['email'])
 		if(user.password == data['password']):
 			res['status']= True
@@ -27,7 +27,7 @@ def login(request):
 def register(request):
 	res = {}
 	try:
-		data = request.POST.copy()
+		data = request.REQUEST.copy()
 		user = User.objects.get(email = data['email'])
 		res['status']= False				
 	except User.DoesNotExist:
