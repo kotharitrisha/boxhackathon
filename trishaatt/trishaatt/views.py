@@ -54,7 +54,15 @@ def edit(request):
 		
 @csrf_exempt
 def project_add(request):
-	pass
+	if (request.POST):
+		res = json.loads(ajax.project_add(request))
+		print res
+		if (res['status']):
+			return HttpResponseRedirect("index.html")
+		else:
+			return HttpResponseRedirect("project_add.html")
+	else:
+		return render_to_response("project_add.html")
 	
 @csrf_exempt
 def project_search(request):

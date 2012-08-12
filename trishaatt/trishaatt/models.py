@@ -17,7 +17,7 @@ class Project(models.Model):
 	title = models.CharField(max_length=100)
 	desc = models.CharField(max_length=300)
 	filename = models.CharField(max_length=100)
-	deadline = models.TimeField()
+#	deadline = models.TimeField()
 	owner = models.ForeignKey('User')
 
 

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="/project_add">
+        Project name: <input type="text" name="title" /><br />
+	Project description: <input type="text" name="desc" /> <br />
+        Project owner: <input type="text" name="owner" />
+        <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
+

@@ -3,6 +3,7 @@ from django.views.decorators.csrf import *
 import sys
 from models import *
 import json
+import datetime
 
 def test(request):
 	return HttpResponse(json.dumps({'app_name': 'Trisha and the Trees'}))
@@ -76,7 +77,18 @@ def edit(request):
 	
 @csrf_exempt
 def project_add(request):
-	pass
+        res = {}
+	try:
+       		today = datetime.datetime.today()
+		print today
+		user = User.objects.get(email = data['owner'])
+		project = Project(title = data['title'], desc= data['desc'], filename = data['filename'], owner =user)
+		project.save()
+		res['status']= True
+	except:
+		print sys.exc_info()[0]
+		res['status']= True
+        return json.dumps(res)
 	
 @csrf_exempt
 def project_search(request):
