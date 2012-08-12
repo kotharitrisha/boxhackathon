@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block headlink-left %}
-<a href="#" id="new-project-link">New Project</a>
+<span class="name">Welcome, {{ email }}!</span>
 {% endblock %}
 {% block headlink-right %}
-Hello <span class="bold">{{ email }}</span> | <a href="/logout">Log out</a>
+ <a href="#" id="new-project-link">New Project</a> | <a href="#" id="edit-profile-link">Edit Profile</a> | <a href="/logout">Log out</a>
 {% endblock %}
 {% block content %}
 <script type="text/javascript" src="/static/third-party/jquery.dataTables.min.js"></script>
