@@ -23,7 +23,14 @@
         <input type="text" name="project_title" id="project_title"/><br />
         <label for="project_desc">Project Description</label> <br />
 		<input type="text" name="project_desc" id="project_desc"/> <br />
-        <label for="project_filename">Project Filename</label> <br />
+        <label for="project_filename">Box Filename</label> <br />
+        <select name="task_owner" id="task_owner">
+		  <option value="xyz.txt">xyz.txt</option>
+		  <option value="abc.txt">abc.txt</option>
+		  <option value="pqr.txt">pqr.txt</option>
+		  <option value="uvw.txt">uvw.txt</option>
+		  <option value="ijk.txt">ijk.txt</option>	  
+		</select><br/>
         <input type="text" name="project_filename" id="project_filename"/> <br />
         <input type="button" value="Next" onclick="add_project();" />
 </form>
@@ -34,9 +41,10 @@
 		<input type="text" name="task_desc" id="task_desc"/> <br />
 		<label for="task_owner">Task Owner</label> <br />
 		<select name="task_owner" id="task_owner">
-		  <option value="No employees">No employees</option>
-		  <option value="1-2 employees">1-2 employees</option>
-		  <option value="Other">Other(Specify reason)</option>
+		  <option value="helloanant007@gmail.com">helloanant007@gmail.com</option>
+		  <option value="lior.gavish@gmail.com">lior.gavish@gmail.com</option>
+		  <option value="kotharitrisha@gmail.com">kotharitrisha@gmail.com</option>
+		  <option value="kotharitrisha@gmail.com">avida.jonathan@gmail.com</option>		  
 		</select><br/>
 		<label for="task_desc">Deadline</label> <br />
 		<input type="text" name="task_deadline" id="task_deadline"/> <br />
