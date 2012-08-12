@@ -61,7 +61,7 @@ def edit(request):
 	res = {}
 	try:
 		data = request.POST.copy()
-		user = User.objects.get(email = data['email'])
+		user = User.objects.get(email = request.session['email'])
 		if data["phone"]:
 			user.phone= data["phone"]
 		else:

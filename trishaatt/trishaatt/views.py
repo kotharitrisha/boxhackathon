@@ -46,6 +46,7 @@ def logout(request):
 def edit(request):
 	if (request.POST):
 		print request.POST
+		ajax.edit(request)
 		return HttpResponse("editted succesfully")
 	else:
 		return render_to_response('edit.html')
