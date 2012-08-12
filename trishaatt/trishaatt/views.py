@@ -10,15 +10,22 @@ def test(request):
 @csrf_exempt
 def login(request):
 	if(request.POST):
-		print request.POST
-		return HttpResponse("success")
+		res = ajax.login(request)
+		if(res['status']):
+			return HttpResponse("success")
+		else:
+			return HttpResponse("failure")
+			
 	else:
 		return render_to_response('login.html')
 
 @csrf_exempt
 def signup(request):
 	if (request.POST):
-		print request.POST
-		return HttpResponse("successfully registered!")
+		res = ajax.register(request)
+		if(res['status']):
+			return HttpResponse("success")
+		else:
+			return HttpResponse("failure")
 	else:
 		return render_to_response('signup.html')
