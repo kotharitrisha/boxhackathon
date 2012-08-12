@@ -9,7 +9,10 @@ urlpatterns = patterns('',
     url(r'^$', 'trishaatt.views.test'),
     url(r'^login', 'trishaatt.views.login'),
     url(r'^ajax/test/', 'trishaatt.ajax.test'),
-    url(r'^signup', 'trishaatt.views.signup')
+    url(r'^signup', 'trishaatt.views.signup'),
+    url(r'^edit', 'trishaatt.views.edit'),
+
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
