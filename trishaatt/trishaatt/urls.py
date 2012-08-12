@@ -7,7 +7,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'trishaatt.views.test'),
-    url(r'^login/', 'trishaatt.views.login'),
+    url(r'^login', 'trishaatt.views.login'),
     url(r'^ajax/test/', 'trishaatt.ajax.test'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
