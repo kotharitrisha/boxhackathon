@@ -17,9 +17,9 @@ def login(request):
 	if(request.POST):
 		res = json.loads(ajax.login(request))
 		if(res['status']):
-			return HttpResponseRedirect('index.html')
+			return HttpResponseRedirect('/index')
 		else:
-			return HttpResponseRedirect('login.html')			
+			return HttpResponseRedirect('/login')			
 	else:
 		return render_to_response('login.html')
 
@@ -28,9 +28,9 @@ def signup(request):
 	if (request.POST):
 		res = json.loads(ajax.register(request))
 		if(res['status']):
-			return HttpResponseRedirect("index.html")
+			return HttpResponseRedirect("/index")
 		else:
-			return HttpResponseRedirect("register.html")
+			return HttpResponseRedirect("/signup")
 	else:
 		return render_to_response('signup.html')
 
@@ -38,7 +38,7 @@ def signup(request):
 @csrf_exempt
 def logout(request):
 	ajax.logout(request)
-	return HttpResponseRedirect('login.html')	
+	return HttpResponseRedirect('/login')	
 
 
 
