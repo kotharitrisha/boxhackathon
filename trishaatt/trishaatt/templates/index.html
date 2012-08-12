@@ -18,15 +18,15 @@
 </div>
 
 <div id="new-project-dialog" style="display:none;"> 
-
-<label for="project_title">Project Title</label> <br />
-<input type="text" name="project_title" id="project_title"/><br />
-<label for="project_desc">Project Description</label> <br />
-<input type="text" name="project_desc" id="project_desc"/> <br />
-<label for="project_filename">Project Filename</label> <br />
-<input type="text" name="project_filename" id="project_filename"/> <br />
-<input type="submit" value="Next" onclick="add_project();" />
-
+<form class="dialog">
+        <label for="project_title">Project Title</label> <br />
+        <input type="text" name="project_title" id="project_title"/><br />
+        <label for="project_desc">Project Description</label> <br />
+		<input type="text" name="project_desc" id="project_desc"/> <br />
+        <label for="project_filename">Project Filename</label> <br />
+        <input type="text" name="project_filename" id="project_filename"/> <br />
+        <input type="button" value="Next" onclick="add_project();" />
+</form>
 </div>
 <div id="new-task-dialog" style="display:none;"> 
 <form class="dialog">
@@ -36,8 +36,8 @@
 		<input type="text" name="task_owner" id="task_owner"/> <br />
 		<label for="task_desc">Deadline</label> <br />
 		<input type="text" name="task_deadline" id="task_deadline"/> <br />
-        <input type="submit" value="Next" onclick="addMoreTask(); return false;" />
-        <input type="submit" value="Done" onclick="doneAllTasks(); return false;" />
+        <input type="button" value="Next" id= "task_next" onclick="add_task(); return false;" />
+        <input type="button" value="Done" id="task_done" onclick="doneAllTasks(); return false;" />
 </form>
 </div>
 

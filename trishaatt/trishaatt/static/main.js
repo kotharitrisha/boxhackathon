@@ -3,7 +3,7 @@
 $(document).ready(function(){ 	
     console.log("I am up");  
     
-	addTask = function(){
+	addTask = function(data){
 		$("#new-project-dialog").dialog("close");
 		console.log("Add Task");
 		var width = $(window).width();
@@ -13,6 +13,7 @@ $(document).ready(function(){
 		var width = width - 100;
 		var height = height - 100;
 		var title = 'Add Task';	
+		$("#new-task-dialog").data = data
 		$("#new-task-dialog").dialog({ title: title, height: height, width: width, autoOpen:false, modal: true});		
 		$("#new-task-dialog").dialog("open");
 	}
@@ -60,30 +61,48 @@ $(document).ready(function(){
     
     get_projects = function(params) {
 		
-		/*
+		
 		var jaqxhr = $.post("/ajax/project_search/",
 			{},
 			function(data){
+				projects_table.fnClearTable();
 				populate_projects_table(data);
-			}); 
-			*/
-			projects_table.fnClearTable();
-			populate_projects_table(null);
+			}); 			
+			
 	}
 	
 	
-	get_tasks = function(params) {
-		/*
-		var jaqxhr = $.post("/ajax/project_search/",
-			{},
+	get_tasks = function(id) {
+		console.log("getting tasks");
+		var jaqxhr = $.post("/ajax/task_search/",
+			{'id':id},
 			function(data){
-				populate_projects_table(data);
+				tasks_table.fnClearTable();
+				populate_tasks_table(data);
 			}); 
-			*/
-			tasks_table.fnClearTable();
-			populate_tasks_table(null);
+			
+			
 	}
 	
+	
+	add_task = function(data) {
+		console.log("add tasks");
+		params = {};
+		params.desc = $("#task_desc").val();
+		params.owner = $("#task_owner").val();
+		params.deadline = $("#task_deadline").val();
+		console.log(params);
+		console.log("added task");		
+		var jaqxhr = $.post("/ajax/task_add/",
+			{'desc': params.desc,
+			'owner': params.owner,
+			'deadline': params.deadline},			
+			function(data){
+				addMoreTask(data);
+			}); 
+			
+			
+	}
 	
 	add_project = function() {
 		console.log("here");
@@ -97,22 +116,30 @@ $(document).ready(function(){
 			'desc': params.desc,
 			'filename': params.filename},
 			function(data){
-				addTask();
+				addTask(data);
 			}); 
 			
 			
 	}
 	
 	
+	function bind(fnc, val ) {
+		return function () {
+			return fnc(val);
+		};
+	}
+	
 	function populate_projects_table(data){
-		console.log("Inside Populate Projects");
-		for(var i = 0; i< 15; i++){
+		var x = JSON.parse(data)
+		console.log(x)
+		for(var i = 0; i< x.projects.length; i++){
 			curr = projects_table.fnAddData( [
-								'Trisha Kothari'
+								x.projects[i].title
 							  ]);	
-							  
+			var id = x.projects[i].id	
+			var f = bind(get_tasks, id)		  
 			curr_row = projects_table.fnGetNodes(curr);
-			$(curr_row).click(get_tasks);
+			$(curr_row).click(f);
 		}
 		
 	}
@@ -120,11 +147,13 @@ $(document).ready(function(){
 	
 	function populate_tasks_table(data){
 		console.log("Inside Populate Tasks");
-		for(var i = 0; i< 15; i++){
+		var x = JSON.parse(data)
+		console.log(x)
+		for(var i = 0; i< x.tasks.length; i++){
 		curr = tasks_table.fnAddData( [
-       						'Trisha',
-       						'Needs to sleep',
-       						 'now.'
+       						x.tasks[i].desc,
+       						x.tasks[i].owner_id,
+       						x.tasks[i].step_deadline
 		                  ]);					
 		}	
 	}
