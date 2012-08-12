@@ -1,5 +1,5 @@
 
-
+project_id = 0
 $(document).ready(function(){ 	
     console.log("I am up");  
     
@@ -16,6 +16,7 @@ $(document).ready(function(){
 		$("#new-task-dialog").data = data
 		$("#new-task-dialog").dialog({ title: title, height: height, width: width, autoOpen:false, modal: true});		
 		$("#new-task-dialog").dialog("open");
+		console.log("pro_id " + project_id)
 	}
 
 
@@ -87,16 +88,19 @@ $(document).ready(function(){
 	
 	add_task = function(data) {
 		console.log("add tasks");
+		console.log("pro_id " + project_id)
 		params = {};
 		params.desc = $("#task_desc").val();
 		params.owner = $("#task_owner").val();
 		params.deadline = $("#task_deadline").val();
+		params.project_id = project_id
 		console.log(params);
 		console.log("added task");		
 		var jaqxhr = $.post("/ajax/task_add/",
 			{'desc': params.desc,
 			'owner': params.owner,
-			'deadline': params.deadline},			
+			'deadline': params.deadline,
+			'project_id': params.project_id},			
 			function(data){
 				addMoreTask(data);
 			}); 
@@ -116,6 +120,11 @@ $(document).ready(function(){
 			'desc': params.desc,
 			'filename': params.filename},
 			function(data){
+				console.log(data)
+				x = JSON.parse(data)
+				project_id = x.id
+				console.log('orig id')
+				console.log(project_id)
 				addTask(data);
 			}); 
 			

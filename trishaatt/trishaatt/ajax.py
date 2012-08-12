@@ -80,10 +80,12 @@ def project_add(request):
 	res = {}
 	try:
 		data = request.REQUEST.copy()
+		print data
 		project = Project(title = data['title'], desc= data['desc'], filename = data['filename'])
 		project.save()
 		res['status']= True
 		res['id']= project.id
+		print res
 	except:
 		print sys.exc_info()[0]
 		res['status']= False
@@ -127,12 +129,19 @@ def task_add(request):
 		data = request.REQUEST.copy()
 		print data
 		today = datetime.datetime.today()
-		project = Project.objects.get(id=2)
+		project = Project.objects.get(id=data['project_id'])
 		user = User.objects.get(email = data['owner'])
+		try:
+			step_id = data['step_id']
+		except:
+			step_id = 1
+		res['data']= {'step_id': step_id}
 		print "so it is reaching user?"
-		task = Task(desc = data['desc'], step_id= 1,  step_deadline = today, project = project, owner =user)
+		task = Task(desc = data['desc'], step_id= step_id,  step_deadline = today, project = project, owner =user)
 		task.save()
-		res['status']= True
+		print "success"
+		res['status']= True	
+		
 	except:
 		print sys.exc_info()[0]
 		res['status']= False
@@ -152,7 +161,7 @@ def task_search(request):
 	
 		for t in task:
 			res['tasks'].append({'project_id': str(t.project.id), 'desc': str(t.desc), 'step_deadline' : str(t.step_deadline),
-			'owner_id' : str(t.owner.id), 'step_id' : str(t.step_id)})
+			'owner_id' : str(t.owner.email), 'step_id' : str(t.step_id)})
 
 		res['status'] = True
 		print "done..."
