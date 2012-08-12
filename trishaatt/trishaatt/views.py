@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import *
-import ajax
+import ajax, json
 
 def test(request):
 	app_name = ajax.test(request)
@@ -10,7 +10,7 @@ def test(request):
 @csrf_exempt
 def login(request):
 	if(request.POST):
-		res = ajax.login(request)
+		res = json.loads(ajax.login(request))
 		if(res['status']):
 			return HttpResponse("success")
 		else:
@@ -22,7 +22,7 @@ def login(request):
 @csrf_exempt
 def signup(request):
 	if (request.POST):
-		res = ajax.register(request)
+		res = json.loads(ajax.register(request))
 		if(res['status']):
 			return HttpResponse("success")
 		else:

@@ -20,7 +20,7 @@ def login(request):
 	except:
 		print sys.exc_info()[0]
 		res['status']=False
-	return res
+	return json.dumps(res)
 	
 	
 @csrf_exempt
@@ -40,7 +40,7 @@ def register(request):
 	except:
 		print sys.exc_info()[0]
 		res['status']=False
-	return res
+	return json.dumps(res)
 	
 @csrf_exempt
 def edit(request):
