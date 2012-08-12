@@ -14,6 +14,7 @@ def login(request):
 		data = request.REQUEST.copy()
 		user = User.objects.get(email = data['email'])
 		if(user.password == data['password']):
+			request.session['email'] = data['email']
 			res['status']= True
 		else:
 			res['status']= False
@@ -21,6 +22,12 @@ def login(request):
 		print sys.exc_info()[0]
 		res['status']=False
 	return json.dumps(res)
+
+
+
+@csrf_exempt
+def logout(request):
+	del request.session['email']
 	
 	
 @csrf_exempt
@@ -34,6 +41,7 @@ def register(request):
 		try:		
 			user = User(email = data['email'], password= data['password'])
 			b = user.save()
+			request.session['email'] = data['email']
 			res['status']= True	
 		except:
 			res['status']= True	

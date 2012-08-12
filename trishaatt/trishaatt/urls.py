@@ -6,11 +6,13 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'trishaatt.views.test'),
+    url(r'^$', 'trishaatt.views.index'),
+    url(r'^index', 'trishaatt.views.index'),
     url(r'^login', 'trishaatt.views.login'),
     url(r'^ajax/test/', 'trishaatt.ajax.test'),
     url(r'^signup', 'trishaatt.views.signup'),
     url(r'^edit', 'trishaatt.views.edit'),
+    url(r'^logout', 'trishaatt.views.logout'),
 
 
     # Uncomment the admin/doc line below to enable admin documentation:
