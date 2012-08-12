@@ -81,8 +81,7 @@ def project_delete(request):
 def task_add(request):
         if (request.POST):
                 res = json.loads(ajax.task_add(request))
-		print "reached request.post"
-                print res
+		print res
 		if (res['status']):
 			return HttpResponseRedirect("index.html")
                 else:

@@ -102,7 +102,14 @@ def project_edit(request):
 	
 @csrf_exempt
 def project_delete(request):
-	pass
+	res = {}
+	try:
+		data = request.REQUEST.copy()
+                project = Project.objects.get(title = data['title'])
+                project.delete()
+        except:
+		print sys.exc()[0]
+        return json.dumps(res)
 	
 	
 @csrf_exempt
@@ -114,10 +121,13 @@ def task_add(request):
 	        print data
                 today = datetime.datetime.today()
                 print today
-                project_rel = Project.objects.get(title = data['project_id'])
-		print project_rel
-		user = project.owner
-		print user
+                print data['project_id']
+
+		project_rel = Project.objects.get(title = data['project_id'])
+		print "is it even reaching here?"
+		
+		user = project_rel.owner
+		print "so it is reaching user?"
                 task = Task(desc = data['desc'], step_id= data['step_id'],  step_deadline = today, project = project_rel, owner =user)
                 task.save()
                 res['status']= True
@@ -125,6 +135,7 @@ def task_add(request):
                 print sys.exc_info()[0]
                 res['status']= False
         return json.dumps(res)
+
 	
 @csrf_exempt
 def task_search(request):
@@ -137,5 +148,14 @@ def task_edit(request):
 	
 @csrf_exempt
 def task_delete(request):
-	pass
+	res = {}
+	try:
+		data = request.REQUEST.copy()
+		task = Task.objects.get(desc = data['desc'])
+		task.delete()
+		res['status'] = True
+	except:
+		print sys.exc()[0]
+		res['status'] =False
+	return json.dumps(res)
 	
