@@ -43,7 +43,10 @@ body {
 	position: relative;
 	height: 39px;
 	line-height: 1.2;
-	background-color:#DEE0E2;
+	background: #999; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#000000'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */ 
 	margin-bottom: 1px;
 	color: white;
 	border-bottom: 1px solid #C7C8C9;
@@ -54,8 +57,15 @@ body {
 	position:absolute;
 	top: 10px;
 	right:20px;
-	
+	color: #FFF;
 }
+
+#headlink a{
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFF;
+}
+
 
 #page{
 	position: absolute;
