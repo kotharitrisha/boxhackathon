@@ -10,7 +10,11 @@
 </head>
 
 <body>
-	<div id="header"></div>
+	<div id="header">
+		<div id="headlink">
+		{% block headlink %}{% endblock %}
+		</div>
+	</div>
 	<div id="page">
 	{% block content %}{% endblock %}
 	</div>
