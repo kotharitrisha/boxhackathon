@@ -4,9 +4,7 @@ from django.views.decorators.csrf import *
 import ajax, json
 
 def index(request):
-	print str(request.session)
 	try:
-		print request.session['email']
 		#c = RequestContext(request, {'email': request.session['email']})
 		return render_to_response("index.html")		
 	except:
@@ -18,7 +16,6 @@ def index(request):
 def login(request):
 	if(request.POST):
 		res = json.loads(ajax.login(request))
-		print res
 		if(res['status']):
 			return HttpResponseRedirect('index.html')
 		else:

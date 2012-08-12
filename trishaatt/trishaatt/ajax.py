@@ -49,21 +49,24 @@ def register(request):
 		print sys.exc_info()[0]
 		res['status']=False
 	return json.dumps(res)
+
+
+
 	
 @csrf_exempt
 def edit(request):
 	res = {}
-        try:
-                data = request.POST.copy()
-                user = User.objects.get(email = data['email'])
-                if data["phone"]:
+	try:
+		data = request.POST.copy()
+		user = User.objects.get(email = data['email'])
+		if data["phone"]:
 			user.phone= data["phone"]
 		else:
 			return
 		b = user.save()
 		print b
 		res['status'] = True
-        except:
-                print sys.exc_info()[0]
-                res['status']=False
-        return res
+	except:
+			print sys.exc_info()[0]
+			res['status']=False
+	return res
