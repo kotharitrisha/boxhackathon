@@ -1,0 +1,102 @@
+/*
+@author: Anant Bhardwaj
+@date: 08/11/2012
+*/
+
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, address, cite, code, del, dfn, font, img, ins, kbd, q, s, samp, small, strike, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, applet, object, iframe, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+}
+
+h1 {
+	font-size: 20px;
+	line-height: 26px;
+	font-weight: bold;
+	color: black;
+	margin-bottom: 5px;
+	display: inline;
+}
+
+h2 {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: bold;
+	color: black;
+	margin-bottom: 5px;
+	display: inline;
+}
+
+ol, ul, li {
+	list-style: none;
+}
+
+body {
+	height: 100%;
+	overflow: auto;
+}
+
+#header {
+	position: relative;
+	height: 39px;
+	line-height: 1.2;
+	background-color:#DEE0E2;
+	margin-bottom: 1px;
+	color: white;
+	border-bottom: 1px solid #C7C8C9;
+	width: 100%;
+}
+
+#page{
+	position: absolute;
+	top: 40px;
+	right: 0px;
+	bottom: 50px;
+	left: 0px;
+	width: 100%;
+}
+
+#left-column-area{
+    position: absolute;    
+	top: 0px;
+	right: auto;
+	bottom: 0px;
+	left: 0px;
+	background-color: white;
+	color: #333;
+	max-width: 50%;
+	width: 350px;
+	z-index:100;
+}
+
+
+#main-area{
+    position:absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 350px;
+	background-color: #FFF;
+}
+
+
+#footer {
+    position: absolute;
+	border-top: 1px solid #C7C8C9;
+	background-color: #DEE0E2;
+	margin:0px;	
+	padding:0px;
+	right: 0;
+	bottom: 0;
+	left: 0px;
+	font-size: 12px;
+	height: 49px;
+	line-height: 16px;
+	width: 100%;
+	overflow: hidden;
+}
+
+
