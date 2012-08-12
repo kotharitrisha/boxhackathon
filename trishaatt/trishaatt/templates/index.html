@@ -1,8 +1,13 @@
 {% extends "base.html" %}
-{% block headlink %}
+{% block headlink-left %}
+<a href="#" id="new-project-link">New Project</a>
+{% endblock %}
+{% block headlink-right %}
 Hello <span class="bold">{{ email }}</span> | <a href="/logout">Log out</a>
 {% endblock %}
 {% block content %}
+<script type="text/javascript" src="/static/third-party/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="static/main.js"></script>
 <div id="left-column-area">
 	<table id="projects-table" class="dataTable" cellpadding="0" cellspacing="0" width="100%">
 	</table>	
@@ -11,8 +16,43 @@ Hello <span class="bold">{{ email }}</span> | <a href="/logout">Log out</a>
 	<table id="tasks-table" class="dataTable" cellpadding="0" cellspacing="0" width="100%">
 	</table>	
 </div>
-<script type="text/javascript" src="/static/third-party/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="static/main.js"></script>
+
+<div id="new-project-dialog" style="display:none;"> 
+<form class="dialog">
+        <label for="project_title">Project Title</label> <br />
+        <input type="text" name="project_title" id="project_title"/><br />
+        <label for="project_desc">Project Description</label> <br />
+		<input type="text" name="project_desc" id="project_desc"/> <br />
+        <label for="project_filename">Project Filename</label> <br />
+        <input type="text" name="project_filename" id="project_filename"/> <br />
+        <input type="submit" value="Next" onclick="addTask();" />
+</form>
+</div>
+<div id="new-task-dialog" style="display:none;"> 
+<form class="dialog">
+        <label for="task_desc">Task Description</label> <br />
+		<input type="text" name="task_desc" id="task_desc"/> <br />
+		<label for="task_owner">Task Owner</label> <br />
+		<input type="text" name="task_owner" id="task_owner"/> <br />
+		<label for="task_desc">Deadline</label> <br />
+		<input type="text" name="task_deadline" id="task_deadline"/> <br />
+        <input type="submit" value="Next" onclick="addMoreTask();" />
+        <input type="submit" value="Done" onclick="doneAllTasks();" />
+</form>
+</div>
+
+<div id="new-task-dialog-temp" style="display:none;"> 
+<form class="dialog">
+        <label for="task_desc">Task Description</label> <br />
+		<input type="text" name="task_desc" id="task_desc"/> <br />
+		<label for="task_owner">Task Owner</label> <br />
+		<input type="text" name="task_owner" id="task_owner"/> <br />
+		<label for="task_desc">Deadline</label> <br />
+		<input type="text" name="task_deadline" id="task_deadline"/> <br />
+        <input type="submit" value="Next" onclick="addMoreTask();" />
+        <input type="submit" value="Done" onclick="doneAllTasks();" />
+</form>
+</div>
 {% endblock %}
 
 

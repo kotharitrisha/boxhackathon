@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <form method="POST" action="/project_add">
-        Project title: <input type="text" name="title" /><br />
-	Project description: <input type="text" name="desc" /> <br />
-        Project owner: <input type="text" name="owner" />
-        Project filename: <input type="text" name="filename" />
-        Project deadline: <input type="text" name="deadline" />
+	
+
+        <label for="project_title">Project Title</label>
+        <input type="text" name="title" id="project_title"/><br />
+        <label for="project_desc">Project Description</label>
+		<input type="text" name="desc" id="project_desc"/> <br />
+		<label for="project_owner">Project Owner</label>
+        <input type="text" name="owner" id="project_owner"/>
+        <label for="project_filename">Project Filename</label>
+        <input type="text" name="filename" id="project_filename"/>
+        <label for="project_deadline">Deadline</label>
+        <input type="text" name="deadline" id="project_deadline" />
 
         <input type="submit" value="Submit" />
 </form>

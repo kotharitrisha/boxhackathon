@@ -1,5 +1,45 @@
+function addTask(){
+	console.log("Add Task"); 
+	$("#new-project-dialog").dialog("destroy");
+	var width = $(window).width();
+	var height = $(window).height();
+
+	// Provide some space between the window edges.
+	var width = width - 100;
+	var height = height - 100;
+	var title = 'Add Task';
+	$("#new-task-dialog").dialog({ title: title, height: height, width: width});
+}
+
+function closeDialog(){
+	$("#new-task-dialog-temp").dialog("close");
+	$("#new-task-dialog-temp").dialog("destroy");
+}
+
+function openDialog(){
+	var width = $(window).width();
+	var height = $(window).height();
+
+	// Provide some space between the window edges.
+	var width = width - 100;
+	var height = height - 100;
+	var title = 'Add Task';
+	$("#new-task-dialog-temp").dialog({ title: title, height: height, width: width});
+}
+
+function addMoreTask(){
+	closeDialog();
+	console.log("Add More Task"); 
+	openDialog();
+}
+
+function doneAllTasks(){
+	console.log("Done Adding"); 
+	$("#new-task-dialog").dialog('close');
+}
+
 $(document).ready(function(){ 	
-    console.log("I am up");
+    console.log("I am up");   
     
     projects_table = $('#projects-table').dataTable({
 		"sDom": '<"top"f<"clear">>rt<"bottom"ilp<"clear">>',
@@ -31,6 +71,7 @@ $(document).ready(function(){
     });
     
     get_projects = function(params) {
+		
 		/*
 		var jaqxhr = $.post("/ajax/project_search/",
 			{},
@@ -38,6 +79,7 @@ $(document).ready(function(){
 				populate_projects_table(data);
 			}); 
 			*/
+			projects_table.fnClearTable();
 			populate_projects_table(null);
 	}
 	
@@ -50,6 +92,7 @@ $(document).ready(function(){
 				populate_projects_table(data);
 			}); 
 			*/
+			tasks_table.fnClearTable();
 			populate_tasks_table(null);
 	}
 	
@@ -79,6 +122,19 @@ $(document).ready(function(){
 		}	
 	}
 	
+	new_project = function() {
+		var width = $(window).width();
+		var height = $(window).height();
+
+		// Provide some space between the window edges.
+		var width = width - 100;
+		var height = height - 100;
+		var title = 'New Project';
+		$('#new-project-dialog').dialog({ title: title, height: height, width: width });
+			
+	}
+
+	$('#new-project-link').click(new_project);
 	get_projects();
-	 
+	
 });
